@@ -1,5 +1,5 @@
 {
-  "name": "Dispatcher",
+  "name": "TraktTVRanker",
   "description": "TraktTv Movie/ Show Production Tool. (Dispatcher)",
   "main": "Main.xaml",
   "dependencies": {
