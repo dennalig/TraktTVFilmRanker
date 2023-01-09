@@ -1,5 +1,5 @@
 {
-  "name": "TraktTVRanker_Dispatcher",
+  "name": "TraktTVFilmRanker_Dispatcher",
   "description": "TraktTv Movie/ Show Production Tool. (Dispatcher)",
   "main": "Main.xaml",
   "dependencies": {
@@ -84,7 +84,7 @@
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
       }
     ],
-    "modernBehavior": true
+    "modernBehavior": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [

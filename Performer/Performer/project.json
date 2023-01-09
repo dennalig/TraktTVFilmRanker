@@ -1,5 +1,5 @@
 {
-  "name": "TrakTV_Performer",
+  "name": "TrakTVFilmRanker_Performer",
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
