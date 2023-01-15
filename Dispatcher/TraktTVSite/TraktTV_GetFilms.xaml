@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TrakTV_GetFilms" this:TrakTV_GetFilms.in_SelectedListURL="https://trakt.tv/users/dennali/watchlist?sort=added,asc" this:TrakTV_GetFilms.IsOnInvalidPage="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TrakTV_GetFilms" this:TrakTV_GetFilms.IsOnInvalidPage="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SelectedListURL" Type="InArgument(x:String)" />
     <x:Property Name="IsOnInvalidPage" Type="InArgument(x:Boolean)" />
@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>706,1355</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1012,1355</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TrakTV_GetFilms_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -133,14 +133,10 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TraktTVSite\TraktTV_ScrapeFilms.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="TraktTVSite\TraktTV_ScrapeFilms.xaml">
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TraktTVSite\TraktTV_ScrapeFilms.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="TraktTVSite\TraktTV_ScrapeFilms.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_BrowserInUse">
-                      <VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="SelectedListBrowser" />
-                    </InArgument>
-                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FilmsScraped">
-                      <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_FilmsFromList" />
-                    </OutArgument>
+                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_BrowserInUse">[SelectedListBrowser]</InArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FilmsScraped">[dt_FilmsFromList]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </Sequence>
@@ -163,7 +159,7 @@
                     </ui:Target>
                   </ui:UiElementExists.Target>
                 </ui:UiElementExists>
-                <If Condition="[IsMultiplePages]" DisplayName="If there are Multiple Pages" sap:VirtualizedContainerService.HintSize="734,2462" sap2010:WorkflowViewState.IdRef="If_3">
+                <If Condition="[IsMultiplePages]" DisplayName="If there are Multiple Pages" sap:VirtualizedContainerService.HintSize="734,2464" sap2010:WorkflowViewState.IdRef="If_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -171,7 +167,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="Handle Multiple Pages" sap:VirtualizedContainerService.HintSize="656,2186" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                    <Sequence DisplayName="Handle Multiple Pages" sap:VirtualizedContainerService.HintSize="656,2188" sap2010:WorkflowViewState.IdRef="Sequence_28">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="PagingText" />
                         <Variable x:TypeArguments="x:Int32" Name="MaxNumberOfPages" />
@@ -211,7 +207,7 @@
                           <InArgument x:TypeArguments="x:String">[PagingText.Trim()]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="594,81" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign sap:VirtualizedContainerService.HintSize="594,82" sap2010:WorkflowViewState.IdRef="Assign_5">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[MaxNumberOfPages]</OutArgument>
                         </Assign.To>
@@ -219,7 +215,7 @@
                           <InArgument x:TypeArguments="x:Int32">[cInt(PagingText(PagingText.Length-1).ToString())]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Sequence DisplayName="Iterate Through pages" sap:VirtualizedContainerService.HintSize="594,1686" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <Sequence DisplayName="Iterate Through pages" sap:VirtualizedContainerService.HintSize="594,1687" sap2010:WorkflowViewState.IdRef="Sequence_31">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:Int32" Name="CurrentPageIndex" />
                         </Sequence.Variables>
@@ -237,9 +233,9 @@
                             <InArgument x:TypeArguments="x:Int32">2</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While" sap:VirtualizedContainerService.HintSize="532,1454" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_6">
+                        <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[CurrentPageIndex &lt;= MaxNumberOfPages]" DisplayName="While" sap:VirtualizedContainerService.HintSize="532,1455" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_6">
                           <ui:InterruptibleWhile.Body>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1288" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,1289" sap2010:WorkflowViewState.IdRef="Sequence_30">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -257,7 +253,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Attribute 'A  /users/dennali/watch...'" sap:VirtualizedContainerService.HintSize="338,203" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="href" DisplayName="Get Attribute 'A  /users/dennali/watch...'" sap:VirtualizedContainerService.HintSize="365,203" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
                                   <ui:GetAttribute.Result>
                                     <OutArgument x:TypeArguments="x:String">[CurrentPagePartialURL]</OutArgument>
                                   </ui:GetAttribute.Result>
@@ -278,8 +274,8 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:GetAttribute>
-                                <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="338,60" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="[&quot;https://trakt.tv/&quot;+CurrentPagePartialURL]" />
-                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[CurrentPagePartialURL]">
+                                <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="365,60" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="[&quot;https://trakt.tv/&quot;+CurrentPagePartialURL]" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="365,52" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[CurrentPagePartialURL]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -287,17 +283,13 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LogMessage>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TraktTVSite\TraktTV_ScrapeFilms.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TraktTVSite\TraktTV_ScrapeFilms.xaml">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TraktTVSite\TraktTV_ScrapeFilms.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="365,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TraktTVSite\TraktTV_ScrapeFilms.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_BrowserInUse">
-                                      <VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="SelectedListBrowser" />
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FilmsScraped">
-                                      <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_FilmsFromCurrentPage" />
-                                    </OutArgument>
+                                    <InArgument x:TypeArguments="ui:Browser" x:Key="in_BrowserInUse">[SelectedListBrowser]</InArgument>
+                                    <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FilmsScraped">[dt_FilmsFromCurrentPage]</OutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
-                                <ui:MergeDataTable Destination="[dt_FilmsFromList]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="338,133" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dt_FilmsFromCurrentPage]">
+                                <ui:MergeDataTable Destination="[dt_FilmsFromList]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="365,133" sap2010:WorkflowViewState.IdRef="MergeDataTable_2" MissingSchemaAction="Add" Source="[dt_FilmsFromCurrentPage]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -305,7 +297,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:MergeDataTable>
-                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Merged Films From List&quot;]">
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="365,52" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Merged Films From List&quot;]">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -314,7 +306,7 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LogMessage>
                               </Sequence>
-                              <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
+                              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:Int32">[CurrentPageIndex]</OutArgument>
                                 </Assign.To>
@@ -324,9 +316,6 @@
                               </Assign>
                             </Sequence>
                           </ui:InterruptibleWhile.Body>
-                          <ui:InterruptibleWhile.Condition>
-                            <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CurrentPageIndex &lt;= MaxNumberOfPages" />
-                          </ui:InterruptibleWhile.Condition>
                         </ui:InterruptibleWhile>
                       </Sequence>
                     </Sequence>
@@ -343,10 +332,11 @@
                   </If.Else>
                 </If>
               </Sequence>
-              <Sequence sap:VirtualizedContainerService.HintSize="496,325" sap2010:WorkflowViewState.IdRef="Sequence_35">
+              <Sequence DisplayName="Assign Out Arguments" sap:VirtualizedContainerService.HintSize="496,325" sap2010:WorkflowViewState.IdRef="Sequence_35">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Got all Films from list&quot;]" />
