@@ -1,0 +1,48 @@
+<h1>Would You Like to Add Anymore to the List?</h1>
+
+<body>
+    <form id="filmForm">
+        <input id='0' type="checkbox" class="filmEntry" name="Title" value='July 14, 2000'>
+        <label for='0'> Title (releaseDate)</label><br>
+
+        <input id='1' type="checkbox" class="filmEntry" name="Title 2" value='July 14, 2001'>
+        <label for='1' > Title 2 (releaseDate)</label><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+
+</html>
+
+<script type='text/javascript'>
+    const form = document.getElementById('filmForm');
+    form.addEventListener('submit', submitForm);
+    function submitForm(e) {
+        const filmOptions = Array.prototype.slice.call(document.getElementsByClassName("filmEntry"));
+        const checkedFilmOptions = filmOptions.filter(isChecked);
+        checkedFilmOptions
+            .forEach(checkedFilmOption => console.log(checkedFilmOption.name));
+        const jsonResultToSend = getJSONStringFromSelection(checkedFilmOptions);
+        console.log(jsonResultToSend);
+        // sendResult(jsonResultToSend);
+
+        e.preventDefault();
+    }
+
+    function isChecked(htmlItem) {
+        return htmlItem.checked === true;
+    }
+
+    function getJSONStringFromSelection(checkedFilms) {
+        const selectedFilmValues =
+            checkedFilms.map(checkedFilm => ({ id: checkedFilm.id, title: checkedFilm.name, releaseDate: checkedFilm.value }));
+        const selectedFilmsString = JSON.stringify(selectedFilmValues);
+        return selectedFilmsString;
+    }
+
+    function sendResult(jsonResultToSend) {
+        window.external.SetResult(jsonResultToSend);
+    }
+
+</script>

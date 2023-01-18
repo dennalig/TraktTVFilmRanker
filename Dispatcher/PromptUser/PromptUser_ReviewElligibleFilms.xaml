@@ -160,7 +160,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:FilterDataTable>
     </Switch>
-    <Sequence sap2010:Annotation.AnnotationText="Generate HTML page using values from data table, write values into html document." DisplayName="Prompt List Review and Edit" sap:VirtualizedContainerService.HintSize="400,737" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Generate HTML page using values from data table, write values into html document." DisplayName="Prompt List Review and Edit" sap:VirtualizedContainerService.HintSize="431,737" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="PageResult" />
         <Variable x:TypeArguments="x:String" Name="CustomInputJavaScript" />
@@ -172,7 +172,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadTextFile File="{x:Null}" Content="[CustomInputJavaScript]" DisplayName="Read ReviewUiFunctionality File" FileName="Data\Input\ReviewUiFunctionality.js" sap:VirtualizedContainerService.HintSize="334,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <ui:ReadTextFile File="{x:Null}" Content="[CustomInputJavaScript]" DisplayName="Read ReviewUiFunctionality File" FileName="Data\Input\ReviewUiFunctionality.js" sap:VirtualizedContainerService.HintSize="338,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
       <ui:WriteTextFile File="{x:Null}" DisplayName="Write ReviewInput Ui for User Input" FileName="Data\Output\ReviewInput.html" sap:VirtualizedContainerService.HintSize="338,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[&quot;&lt;h1&gt;Show Checkboxes&lt;/h1&gt;&#xD;&#xA;&#xD;&#xA;&lt;form&gt;&#xD;&#xA;  &lt;input type='checkbox' id='vehicle1' name= 'vehicle1' value='Bike'&gt;&#xD;&#xA;  &lt;label for='vehicle1'&gt; I have a bike&lt;/label&gt;&lt;br&gt;&#xD;&#xA;&lt;/form&gt;&#xD;&#xA;&#xD;&#xA;&lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;&#xD;&#xA;&quot;+ CustomInputJavaScript]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
